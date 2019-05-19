@@ -20,19 +20,37 @@ var connection = mysql.createConnection({
     database: "amazon2"
 });
 
-connection.connect(function (err) {
-    if (err) throw err;
+function displayDB() {
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
         console.table(res);
-        afterConnection();
+        afterConnection();       
     })
+}
+
+connection.connect(function (err) {
+    if (err) {
+        throw err;
+    } 
+    displayDB();
+    
 })
 
 
 function afterConnection() {
-    inquirer
-        .prompt([
+    inquirer.prompt([
+            {
+                type: "list",
+                message: "What would you like to do?",
+                choices: ["Shop", "Exit"],
+                name: "input"
+            }
+        ])
+            .then(function(user){
+                if (user.input === "Exit"){
+                    connection.end();
+                } else {
+                inquirer.prompt([
             {
                 type: "input",
                 name: "choice",
@@ -44,15 +62,25 @@ function afterConnection() {
                 message: "How many would you like to buy?"
             }
         ])
-        .then(function (user){
-            connection.query("SELECT stock_quantity FROM products WHERE item_id = ?", [user.choice], function (err, res){
-                if (err){
+        .then(function (user) {
+            connection.query("SELECT stock_quantity FROM products WHERE item_id = ?", [user.choice], function (err, res) {
+                if (err) {
                     throw err
-                } else if (user.choice2 > res[0].stock_quantity){
+                } 
+                else if (user.choice2 > res[0].stock_quantity) {
                     console.log("Insufficient quantity!");
-                // } else {
-
+                } 
+                else {
+                    var storage = (res[0].stock_quantity - user.choice2);
+                    connection.query("UPDATE products SET stock_quantity = ? WHERE item_id = ?", [storage, user.choice], function (err) {
+                        if (err) throw err;
+                    });
+                    displayDB();
                 }
+            }
+        )
+    })    
+}
             })
-        });
-    };
+        
+}
