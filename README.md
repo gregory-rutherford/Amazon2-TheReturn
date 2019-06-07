@@ -1,14 +1,14 @@
 # Amazon2-TheReturn
 
-### A mock Amazon store made with node.js, inquirer and mysql
+### A mock Amazon store made with Node.js, Inquirer and Mysql
 
-#### To begin, clone this repository onto your machine and using your terminal `cd` into the folder of "Amazon2_TheReturn" and run `npm install`
+###### To begin, clone this repository onto your machine and using your terminal `cd` into the folder of "Amazon2_TheReturn" and run `npm install`
 
 #### Initializing the server
 * Copy the code from "amazon2.sql" and paste it into your workbench. 
 * Run the query.
 
-##### After running `npm install` and initializing the mysql database run the command `node amazon2_customer.js` to access the customer view, and for the manager view run `node managerview.js`
+###### After running `npm install` and initializing the mysql database run the command `node amazon2_customer.js` to access the customer view, and for the manager view run `node managerview.js`
 
 _You will need to change the password in the `var connection = mysql.connection` section to access the database_ 
 
