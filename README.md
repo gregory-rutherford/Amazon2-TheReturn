@@ -27,5 +27,5 @@ _This contains the bulk of the application_
 * "Add To Inventory" -- this will allow you to enter a products id and add to the quantity.
 * "Add New Product" -- this will allow you to add a new product.
 
-
-
+_Video Link_
+https://www.youtube.com/watch?v=GhCbBWmt7HU&feature=youtu.be
