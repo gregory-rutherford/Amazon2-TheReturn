@@ -2,7 +2,7 @@
 
 ### A mock Amazon store made with Node.js, Inquirer and Mysql
 
-##### To begin, clone this repository onto your machine and using your terminal `cd` into the folder of "Amazon2_TheReturn" and run `npm install`
+To begin, clone this repository onto your machine and using your terminal `cd` into the folder of "Amazon2_TheReturn" and run `npm install`
 
 #### Initializing the server
 * Copy the code from "amazon2.sql" and paste it into your workbench. 
